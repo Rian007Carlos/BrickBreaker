@@ -14,12 +14,14 @@ public class Ball {
     int ySpeed;
     Color color;
     public Circle circle;
+    int circleX;
+    int circleY;
     int circleNextXRight;
     int circleNextYUp;
     int circleNextXLeft;
     int circleNextYDown;
-    int circleXSpeed;
-    int circleYSpeed;
+    public int circleXSpeed;
+    public int circleYSpeed;
 
 
     public Ball(int ballX, int ballY, int size, int xSpeed, int ySpeed) {
@@ -29,45 +31,50 @@ public class Ball {
         this.xSpeed = xSpeed;
         this.ySpeed = ySpeed;
         this.color = Color.WHITE;
-        this.circle = new Circle(ballX, ballY + 5, size);
+        this.circleX = ballX;
+        this.circleY = ballY + 10;
+        this.circleXSpeed = xSpeed;
+        this.circleYSpeed = ySpeed;
+        this.circle = new Circle(circleX, circleY, size);
     }
 
-//    public void update() {
-//
-//        circleXSpeed = xSpeed;
-//        circleYSpeed = ySpeed;
-//
-//        int nextXRight = (ballX + size / 2) + xSpeed;
-//        int nextYUp = (ballY + size / 2) + ySpeed;
-//        int nextXLeft = (ballX - size / 2) + xSpeed;
-//        int nextYDown = (ballY - size / 2) + ySpeed;
-//
-//        circleNextXRight = nextXRight;
-//        circleNextYUp = nextYUp;
-//        circleNextXLeft = nextXLeft;
-//        circleNextYDown = nextYDown;
-//
-//
-//        // Verifique se a bola atingirá as bordas da tela
-//
-//        if (nextXLeft - (size / 2) < 0 || nextXRight + (size / 2) > Gdx.graphics.getWidth()) {
-//            xSpeed = -xSpeed;
-//        }
-//        if (circleNextXLeft - (size / 2) < 0 || circleNextXRight + (size / 2) > Gdx.graphics.getWidth()) {
-//            circleXSpeed = -circleXSpeed;
-//        }
-//        if (nextYDown - (size / 2) < 0 || nextYUp + (size / 2) > Gdx.graphics.getHeight()) {
-//            ySpeed = -ySpeed;
-//        }
-//        if (circleNextYDown - (size / 2) < 0 || circleNextYUp + (size / 2) > Gdx.graphics.getHeight()) {
-//            circleYSpeed = -circleYSpeed;
-//        }
-//
-//        // Atualize as posições da bola
-//        ballX += xSpeed;
-//        ballY += ySpeed;
-//
-//    }
+    public void update() {
+
+        int nextXRight = (ballX + size / 2) + xSpeed;
+        int nextYUp = (ballY + size / 2) + ySpeed;
+        int nextXLeft = (ballX - size / 2) + xSpeed;
+        int nextYDown = (ballY - size / 2) + ySpeed;
+
+        circleNextXRight = nextXRight;
+        circleNextYUp = nextYUp;
+        circleNextXLeft = nextXLeft;
+        circleNextYDown = nextYDown;
+
+
+        // Verifique se a bola atingirá as bordas da tela
+
+        if (nextXLeft - (size / 2) < 0 || nextXRight + (size / 2) > Gdx.graphics.getWidth()) {
+            xSpeed = -xSpeed;
+        }
+        if (circleNextXLeft - (size / 2) < 0 || circleNextXRight + (size / 2) > Gdx.graphics.getWidth()) {
+            circleXSpeed = -circleXSpeed;
+        }
+        if (nextYDown - (size / 2) < 0 || nextYUp + (size / 2) > Gdx.graphics.getHeight()) {
+            ySpeed = -ySpeed;
+        }
+        if (circleNextYDown - (size / 2) < 0 || circleNextYUp + (size / 2) > Gdx.graphics.getHeight()) {
+            circleYSpeed = -circleYSpeed;
+        }
+
+        // Atualize as posições da bola
+        ballX += xSpeed;
+        ballY += ySpeed;
+        circleX += circleXSpeed;
+        circleY += circleYSpeed;
+
+        circle.setPosition(circleX, circleY);
+
+    }
 
 
     public void draw(ShapeRenderer shape) {

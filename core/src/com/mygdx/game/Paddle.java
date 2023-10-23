@@ -24,8 +24,9 @@ public class Paddle {
 
     public void update() {
         paddleX = Gdx.input.getX() - (paddleWidth / 2); // get cursor's x position
-        paddleY = 10; // turn y positive
+        paddleY = 15;
         rectangle.x = paddleX;
+        rectangle.y =  paddleY;
 
 
         // Verifique se o paddle não ultrapassa a borda esquerda

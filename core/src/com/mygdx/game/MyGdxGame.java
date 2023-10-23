@@ -2,7 +2,6 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Circle;
@@ -20,7 +19,9 @@ public class MyGdxGame extends ApplicationAdapter {
     @Override
     public void create() {
         shape = new ShapeRenderer();
-        ball = new Ball(Gdx.graphics.getWidth() / 2, 25,
+
+        // ball y = ballY + size / 2
+        ball = new Ball(Gdx.graphics.getWidth() / 2, 100,
                 10, 2, 3);
 
         shape = new ShapeRenderer();
@@ -37,7 +38,7 @@ public class MyGdxGame extends ApplicationAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 
-//        ball.update();
+        ball.update();
         shape.begin(ShapeRenderer.ShapeType.Filled);
         ball.draw(shape);
         shape.end();
@@ -49,8 +50,10 @@ public class MyGdxGame extends ApplicationAdapter {
 
         if (CheckCollision.collisionChecker(ballCircle, paddleRect)) {
             ball.ySpeed = -ball.ySpeed;
-            System.out.println("OHOSF");
+            ball.circleYSpeed = -ball.circleYSpeed;
+
 
         }
+
     }
 }
