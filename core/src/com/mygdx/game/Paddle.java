@@ -10,6 +10,8 @@ public class Paddle {
     int paddleY;
     int paddleWidth;
     int paddleHeight;
+    public Rectangle rectangle;
+
 
     public Paddle(int x, int y, int width, int height) {
 
@@ -17,11 +19,14 @@ public class Paddle {
         this.paddleY = y;
         this.paddleWidth = width;
         this.paddleHeight = height;
+        this.rectangle = new Rectangle(0, paddleY, paddleWidth, paddleHeight);
     }
 
     public void update() {
         paddleX = Gdx.input.getX() - (paddleWidth / 2); // get cursor's x position
         paddleY = 10; // turn y positive
+        rectangle.x = paddleX;
+
 
         // Verifique se o paddle não ultrapassa a borda esquerda
         if (paddleX < 0) {
