@@ -49,10 +49,21 @@ public class MyGdxGame extends ApplicationAdapter {
         shape.end();
 
         if (CheckCollision.collisionChecker(ballCircle, paddleRect)) {
+
+            // Reverse the ball's vertical direction
             ball.ySpeed = -ball.ySpeed;
             ball.circleYSpeed = -ball.circleYSpeed;
 
-
+            // Verifique a posição da bola em relação ao centro do paddle
+            if (ball.ballX > paddle.paddleX + paddle.paddleWidth / 2) {
+                // Bola à direita do centro do paddle
+                ball.xSpeed = Math.abs(ball.xSpeed); // Movimento para a direita
+                ball.circleXSpeed = Math.abs(ball.circleXSpeed);
+            } else if (ball.ballX < paddle.paddleX + paddle.paddleWidth / 2) {
+                // Bola à esquerda do centro do paddle
+                ball.xSpeed = -Math.abs(ball.xSpeed); // Movimento para a esquerda
+                ball.circleXSpeed = -Math.abs(ball.circleXSpeed);
+            }
         }
 
     }

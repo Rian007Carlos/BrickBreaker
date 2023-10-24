@@ -13,15 +13,15 @@ public class Ball {
     int xSpeed;
     int ySpeed;
     Color color;
-    public Circle circle;
+    Circle circle;
     int circleX;
     int circleY;
     int circleNextXRight;
     int circleNextYUp;
     int circleNextXLeft;
     int circleNextYDown;
-    public int circleXSpeed;
-    public int circleYSpeed;
+    int circleXSpeed;
+    int circleYSpeed;
 
 
     public Ball(int ballX, int ballY, int size, int xSpeed, int ySpeed) {

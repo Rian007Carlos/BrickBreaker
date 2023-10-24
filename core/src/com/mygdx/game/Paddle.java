@@ -10,7 +10,7 @@ public class Paddle {
     int paddleY;
     int paddleWidth;
     int paddleHeight;
-    public Rectangle rectangle;
+    Rectangle rectangle;
 
 
     public Paddle(int x, int y, int width, int height) {
